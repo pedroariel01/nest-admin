@@ -31,6 +31,14 @@ export class ProductController {
     async get(@Param('id')id:number){
         return this.productService.findOne({id});
     }
+    
+
+    @Get('filter/:title')
+    @HasPermission('products')
+    async filter(@Param('title')title:string){
+        return this.productService.filterTitle(title);
+    }
+
 
     @Put(':id')
     @HasPermission('products')
